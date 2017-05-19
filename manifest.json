@@ -3,7 +3,7 @@
    "author": "Pieter Wigboldus",
    "name": "Clickr",
    "description": "Clickr",
-   "version": "0.0.1",
+   "version": "0.0.2",
    "content_scripts": [
      {
          "matches": ["http://*/*","https://*/*"],
@@ -14,7 +14,7 @@
    ],
    "web_accessible_resources": [
        "node_modules/clickr/js/clickr.core.js",
-       "test.login.js",
+       "test.login.js"
    ],
    "browser_action": {
      "default_name": "Clickr",
