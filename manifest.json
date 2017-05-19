@@ -3,7 +3,7 @@
    "author": "Pieter Wigboldus",
    "name": "Clickr",
    "description": "Automated clicker extension",
-   "version": "0.0.6",
+   "version": "0.0.7",
    "content_scripts": [
      {
          "matches": ["http://*/*","https://*/*"],
@@ -25,6 +25,9 @@
      "default_popup": "popup.html"
    },
    "options_page": "options.html",
+   "options_ui": {
+       "page": "options.html"
+     },
    "permissions": [
        "tabs",
        "http://*/*",

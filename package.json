@@ -1,6 +1,6 @@
 {
     "name": "clickr.extension",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "Automated clicker extension",
     "files": [
         "site_content_script.js"
