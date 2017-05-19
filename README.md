@@ -1,0 +1,1 @@
+# clickr.extension
