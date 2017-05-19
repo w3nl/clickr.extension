@@ -1,0 +1,50 @@
+
+<!doctype html>
+<html>
+    <head>
+        <title>Clickr</title>
+
+        <style>
+          body {
+            font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+            font-size: 100%;
+          }
+
+          .button {
+              padding: 5px;
+              background-color: #ccc;
+              margin: 5px;
+              display: block;
+              cursor: pointer;
+          }
+        </style>
+
+        <script src="options.js"></script>
+    </head>
+    <body>
+        <form>
+            <table>
+                <tr>
+                    <td>
+                        Code
+                    </td>
+                    <td>
+                        <textarea
+                            name="textarea"
+                            rows="10"
+                            cols="50"
+                            class="js-code"
+                        ></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="button | js-options-save">
+                            Save
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

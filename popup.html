@@ -1,0 +1,47 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+  <head>
+    <title>Clickr</title>
+    <style>
+      body {
+        font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+        font-size: 100%;
+      }
+
+      .button {
+          padding: 5px;
+          background-color: #ccc;
+          margin: 5px;
+          display: block;
+          cursor: pointer;
+      }
+
+      #next:hover {
+          background-color: #dedede;
+      }
+
+      #next:active {
+          background-color: #b3b3b3;
+      }
+    </style>
+
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+     -->
+    <script src="popup.js"></script>
+  </head>
+  <body>
+    <h1>Clickr</h1>
+    <a class="button | js-login">Login</a>
+    <a class="button | js-custom">Custom</a>
+
+  </body>
+</html>
