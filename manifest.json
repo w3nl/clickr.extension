@@ -2,8 +2,14 @@
    "manifest_version": 2,
    "author": "Pieter Wigboldus",
    "name": "Clickr",
-   "description": "Clickr",
-   "version": "0.0.4",
+   "description": "
+                  Automated clicker extension
+
+                  Test your JavaScript code or automate JavaScript actions on your page.
+
+                  Icon made by Freepik from www.flaticon.com
+                  ",
+   "version": "0.0.5",
    "content_scripts": [
      {
          "matches": ["http://*/*","https://*/*"],
