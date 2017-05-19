@@ -1,10 +1,13 @@
 {
     "name": "clickr.extension",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "Automated clicker extension",
     "files": [
         "site_content_script.js"
     ],
+    "scripts": {
+        "build": "npm install"
+    },
     "main": "site_content_script.js",
     "repository": {
         "type": "git",
@@ -20,6 +23,6 @@
     },
     "homepage": "https://github.com/w3nl/clickr.extension#readme",
     "dependencies": {
-        "clickr": "0.0.4"
+        "clickr": "0.0.5"
     }
 }
