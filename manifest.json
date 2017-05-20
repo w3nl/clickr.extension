@@ -3,7 +3,7 @@
    "author": "Pieter Wigboldus",
    "name": "Clickr",
    "description": "Automated clicker extension",
-   "version": "0.0.7",
+   "version": "0.0.8",
    "content_scripts": [
      {
          "matches": ["http://*/*","https://*/*"],
@@ -14,6 +14,7 @@
    ],
    "web_accessible_resources": [
        "node_modules/clickr/js/clickr.core.js",
+       "node_modules/jquery/dist/jquery.min.js",
        "test.login.js"
    ],
    "icons": {
