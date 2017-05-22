@@ -1,8 +1,10 @@
 script('node_modules/clickr/js/clickr.core');
 
-if(!window.jQuery) {
-    script('node_modules/jquery/dist/jquery.min');
-}
+document.addEventListener('DOMContentLoaded', function() {
+    if(!window.jQuery) {
+        script('node_modules/jquery/dist/jquery.min');
+    }
+});
 
 chrome.runtime.onMessage.addListener(test);
 
