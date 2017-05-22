@@ -58,7 +58,8 @@ var Clickr = (function() {
                 open(test);
             });
 
-            itemRemove.innerText = 'X';
+            itemRemove.innerText = 'x';
+            itemRemove.classList.add('red');
             itemRemove.addEventListener('click', function() {
                 remove(test);
             });
