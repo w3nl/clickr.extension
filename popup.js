@@ -10,26 +10,54 @@
 var Clickr = (function() {
     'use strict';
 
+    var elements = {
+        tests: 'js-popup-tests'
+    };
+
+    var globals = {
+        tests: []
+    };
+
     /**
      * Add all listeners.
      */
     function init() {
-        document.getElementsByClassName('js-login')[0].addEventListener('click', login);
-        document.getElementsByClassName('js-custom')[0].addEventListener('click', custom);
+        check();
     }
 
     /**
-     * Call the login test.
+     * Show all the tests from the options page.
      */
-    function login() {
-        message('file', 'login');
+    function check() {
+        var tests = document.getElementsByClassName(elements.tests)[0];
+
+        tests.innerHTML = '';
+        globals.tests = JSON.parse(localStorage.getItem('tests')) || globals.tests;
+
+        if(!globals.tests) {
+            return;
+        }
+
+        globals.tests.forEach(function(element) {
+            var item = document.createElement('a');
+
+            item.innerText = element;
+            item.classList.add('button');
+            item.addEventListener('click', function() {
+                run(element);
+            });
+
+            tests.appendChild(item);
+        });
     }
 
     /**
      * Call a custom test sript het the options page.
+     *
+     * @param {string} test
      */
-    function custom() {
-        message('code', localStorage.getItem('code'));
+    function run(test) {
+        message('code', localStorage.getItem('test_' + test));
     }
 
     /**

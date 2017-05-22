@@ -11,8 +11,17 @@ var Clickr = (function() {
     'use strict';
 
     var elements = {
-        form: 'js-options-save',
-        code: 'js-code'
+        tests: 'js-options-tests',
+        test:  'js-options-test',
+        form:  'js-options-save',
+        code:  'js-options-code',
+        name:  'js-options-name',
+        new:  'js-options-new'
+    };
+
+    var globals = {
+        tests: [],
+        test:  null
     };
 
     /**
@@ -21,28 +30,118 @@ var Clickr = (function() {
     function init() {
         check();
         document.getElementsByClassName(elements.form)[0].addEventListener('click', save);
+        document.getElementsByClassName(elements.new)[0].addEventListener('click', newTest);
     }
 
     /**
-     * Get the code from the localstorage.
+     * Get the tests from the localstorage.
      */
     function check() {
-        var code = localStorage.getItem('code');
+        var tests = document.getElementsByClassName(elements.tests)[0];
 
+        document.getElementsByClassName(elements.test)[0].setAttribute('hidden', 'hidden');
+
+        tests.innerHTML = '';
+        globals.tests = JSON.parse(localStorage.getItem('tests')) || globals.tests;
+
+        if(!globals.tests) {
+            return;
+        }
+
+        globals.tests.forEach(function(test) {
+            var item = document.createElement('tr');
+            var itemLink = document.createElement('td');
+            var itemRemove = document.createElement('td');
+
+            itemLink.innerText = test;
+            itemLink.addEventListener('click', function() {
+                open(test);
+            });
+
+            itemRemove.innerText = 'X';
+            itemRemove.addEventListener('click', function() {
+                remove(test);
+            });
+
+            item.appendChild(itemLink);
+            item.appendChild(itemRemove);
+
+            tests.appendChild(item);
+        });
+    }
+
+    /**
+     * Show the form for a new test.
+     */
+    function newTest() {
+        globals.test = null;
+
+        document.getElementsByClassName(elements.test)[0].removeAttribute('hidden');
+        document.getElementsByClassName(elements.code)[0].value = '';
+        document.getElementsByClassName(elements.name)[0].removeAttribute('disabled');
+        document.getElementsByClassName(elements.name)[0].value = '';
+    }
+
+    /**
+     * Show the form with results from an existing test.
+     *
+     * @param {string} test
+     */
+    function open(test) {
+        var code = localStorage.getItem('test_' + test);
+
+        globals.test = test;
+
+        document.getElementsByClassName(elements.test)[0].removeAttribute('hidden');
+        document.getElementsByClassName(elements.name)[0].setAttribute('disabled', 'disabled');
+        document.getElementsByClassName(elements.name)[0].value = test;
         document.getElementsByClassName(elements.code)[0].value = code;
     }
 
     /**
-     * Save the code.
+     * Remove a test.
+     *
+     * @param {string} test
+     */
+    function remove(test) {
+        var testPosition = globals.tests.indexOf(test);
+
+        globals.tests.splice(testPosition, 1);
+
+        localStorage.removeItem('test_' + test);
+        localStorage.setItem('tests', JSON.stringify(globals.tests));
+
+        check();
+    }
+
+    /**
+     * Save the test.
      *
      * @param {object} event
      */
     function save(event) {
         var code = document.getElementsByClassName(elements.code)[0].value;
+        var name = document.getElementsByClassName(elements.name)[0].value;
+        var testPosition;
 
         event.preventDefault();
 
-        localStorage.setItem('code', code);
+        if(!globals.test) {
+            testPosition = globals.tests.indexOf(name);
+            if(!name || testPosition >= 0) {
+                check();
+
+                return;
+            }
+
+            globals.test = name;
+            globals.tests.push(name);
+        }
+
+        localStorage.setItem('test_' + globals.test, code);
+        localStorage.setItem('tests', JSON.stringify(globals.tests));
+
+        check();
     }
 
     return {

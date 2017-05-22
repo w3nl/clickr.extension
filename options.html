@@ -22,8 +22,29 @@
         <script src="options.js"></script>
     </head>
     <body>
-        <form>
+        <table class="js-options-tests"></table>
+
+        <hr>
+
+        <button class="button | js-options-new">
+            New
+        </button>
+
+        <hr>
+
+        <form class="js-options-test" hidden>
             <table>
+                <tr>
+                    <td>
+                        Name
+                    </td>
+                    <td>
+                        <input
+                            name="name"
+                            class="js-options-name"
+                        />
+                    </td>
+                </tr>
                 <tr>
                     <td>
                         Code
@@ -33,7 +54,7 @@
                             name="textarea"
                             rows="10"
                             cols="50"
-                            class="js-code"
+                            class="js-options-code"
                         ></textarea>
                     </td>
                 </tr>
