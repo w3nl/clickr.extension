@@ -23,6 +23,6 @@
     },
     "homepage": "https://github.com/w3nl/clickr.extension#readme",
     "dependencies": {
-        "clickr": "0.0.9"
+        "clickr": "0.1.1"
     }
 }
